@@ -1,0 +1,7 @@
+{
+  "status": "success",
+  "application": "CSJ Azure PaaS POC",
+  "message": "Mock API response returned successfully.",
+  "source": "React front end calling mock backend endpoint",
+  "environment": "Local Development"
+}
