@@ -10,9 +10,14 @@ env:
   NODE_VERSION: '20.x'
   APP_NAME: 'app-sj311react-poc-test'
 
+permissions:
+  id-token: write
+  contents: read
+  
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    
     permissions:
       id-token: write        # REQUIRED for OIDC
       contents: read         # REQUIRED for actions/checkout
