@@ -8,6 +8,10 @@ env:
   NODE_VERSION: '20'
   APP_NAME: 'app-sj311react-api-poc-test'
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
