@@ -5,7 +5,8 @@ function ApiTestPage() {
   const [apiResult, setApiResult] = useState(null)
   const [error, setError] = useState(null)
 
-  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || '/mock-api-response.json'
+  // const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || '/mock-api-response.json'
+  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080';
 
   async function callApi() {
     setLoading(true)
@@ -13,7 +14,18 @@ function ApiTestPage() {
     setError(null)
 
     try {
-      const response = await fetch(apiBaseUrl)
+      const response = await fetch(`${apiBaseUrl}/api/311-ticket/preview`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-correlation-id': crypto.randomUUID(),
+        },
+        body: JSON.stringify({
+          requestType: 'Service Request',
+          description: 'Streetlight outage near test location',
+          submittedBy: 'ResidentTestUser',
+        }),
+      })
 
       if (!response.ok) {
         throw new Error(`API call failed with status ${response.status}`)
