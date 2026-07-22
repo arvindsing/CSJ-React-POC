@@ -1,0 +1,44 @@
+name: Build and Deploy CSJ React POC
+
+on:
+  push:
+    branches:
+      - singharv
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: '20.x'
+  APP_NAME: 'app-sj311react-poc-test'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run lint
+        run: npm run lint
+
+      - name: Build React app
+        run: npm run build
+
+      - name: Add production startup file
+        run: |
+          echo '{ "scripts": { "start": "pm2 serve /home/site/wwwroot --no-daemon --spa" }, "dependencies": { "pm2": "latest" } }' > dist/package.json
+
+      - name: Deploy to Azure Government App Service
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ env.APP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ./dist
