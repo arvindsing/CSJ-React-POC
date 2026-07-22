@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 
 const port = process.env.PORT || 8080;
-const allowedOrigin = process.env.ALLOWED_ORIGIN || 'http://localhost:5173';
+const allowedOrigin = process.env.ALLOWED_ORIGIN || 'https://app-sj311react-poc-test.azurewebsites.net/';
 const backendApiUrl = process.env.BACKEND_API_URL;
 const requestTimeoutMs = Number(process.env.REQUEST_TIMEOUT_MS || 5000);
 
