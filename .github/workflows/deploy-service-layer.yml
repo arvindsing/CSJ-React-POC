@@ -1,12 +1,7 @@
 name: Deploy CSJ Service Layer
 
 on:
-  push:
-    branches:
-      - singharv
-    paths:
-      - 'service-layer/**'
-      - '.github/workflows/deploy-service-layer.yml'
+  
   workflow_dispatch:
 
 env:
