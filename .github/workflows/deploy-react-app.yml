@@ -1,9 +1,7 @@
 name: Build and Deploy CSJ React POC
 
 on:
-  push:
-    branches:
-      - singharv
+ 
   workflow_dispatch:
 
 env:
