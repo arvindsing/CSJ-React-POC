@@ -18,10 +18,6 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     
-    permissions:
-      id-token: write        # REQUIRED for OIDC
-      contents: read         # REQUIRED for actions/checkout
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
