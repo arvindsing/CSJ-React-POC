@@ -6,7 +6,7 @@ function ApiTestPage() {
   const [error, setError] = useState(null)
 
   // const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || '/mock-api-response.json'
-  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080';
+  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'https://app-sj311react-api-poc-test.azurewebsites.net/';
 
   async function callApi() {
     setLoading(true)
