@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 dotenv.config();
 
 const app = express();
-
+const port = process.env.PORT || 8080;
 
 const allowedOrigin = process.env.ALLOWED_ORIGIN || 'https://app-sj311react-poc-test.azurewebsites.net/';
 const backendApiUrl = process.env.BACKEND_API_URL || 'https://app-sj311react-api-poc-test.azurewebsites.net/';
